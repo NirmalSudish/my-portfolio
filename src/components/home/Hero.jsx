@@ -26,6 +26,7 @@ const Hero = () => {
     <div className="w-full h-full flex flex-col justify-center relative z-10 overflow-hidden">
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between h-full">
         
+        {/* LEFT SIDE: HI, I'M NIRMAL */}
         <div className="w-full md:w-2/3 lg:w-3/4 text-center md:text-left">
           <motion.h1 
             initial="hidden" animate="visible"
@@ -45,40 +46,46 @@ const Hero = () => {
           </motion.h1>
         </div>
 
-        {/* FIXED: Increased role height and added vertical gap to stop text clashing */}
+        {/* FIXED RIGHT SIDE: No more overlapping */}
         <div className="w-full md:w-1/3 text-center md:text-right flex flex-col items-center md:items-end md:mt-32">
           <motion.div 
             initial={{ opacity: 0 }} 
             animate={nameFinished ? { opacity: 1 } : { opacity: 0 }} 
-            className="flex flex-col gap-6"
+            transition={{ duration: 1 }}
+            className="flex flex-col items-center md:items-end gap-1"
           >
-            <div className="text-xl md:text-2xl text-gray-400 font-light flex flex-col items-center md:items-end">
-              <span className="mb-2">I’m a</span>
+            <div className="text-xl md:text-2xl text-gray-400 font-light leading-none">
+              <p className="mb-2">I’m a</p>
               
-              <div className="h-[2.5em] md:h-[1.5em] relative w-full mb-4"> 
+              {/* Role Container with fixed height to prevent collisions */}
+              <div className="h-[1.2em] relative mb-2 min-w-[200px] md:min-w-0">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={roleIndex}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    className="absolute right-0 top-0 font-bold text-white whitespace-pre-wrap md:whitespace-nowrap"
+                    transition={{ duration: 0.4 }}
+                    className="absolute right-0 top-0 font-bold text-white whitespace-nowrap"
                   >
                     {roles[roleIndex]}
                   </motion.span>
                 </AnimatePresence>
               </div>
 
-              <span className="mb-2">passionate about creating visuals that</span>
+              <p className="mb-2">passionate about</p>
+              <p className="mb-2">creating visuals that</p>
 
-              <div className="h-[1.2em] relative w-full">
+              {/* Word Container with fixed height */}
+              <div className="h-[1.2em] relative min-w-[150px] md:min-w-0">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={wordIndex}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
-                    className="absolute right-0 top-0 font-bold text-[#c792ff]"
+                    transition={{ duration: 0.3 }}
+                    className="absolute right-0 top-0 font-bold text-[#c792ff] whitespace-nowrap"
                   >
                     {flipWords[wordIndex]}
                   </motion.span>

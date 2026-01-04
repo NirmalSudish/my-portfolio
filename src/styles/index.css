@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* html, body logic */
 html, body {
   height: 100%;
   margin: 0;
@@ -14,20 +15,7 @@ html, body {
   cursor: none;
 }
 
-/* FIXED: Hides the BottomProgress bar specifically when lightbox is open */
-body.lightbox-open .bottom-progress-container {
-  opacity: 0;
-  pointer-events: none;
-  visibility: hidden;
-  transform: translate(-50%, 40px);
-}
-
-/* Ensure the progress bar wrapper has this transition */
-.bottom-progress-container {
-  z-index: 50 !important;
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
+/* THE SNAP CONTAINER */
 .snap-container {
   height: 100dvh;
   width: 100vw;
@@ -38,6 +26,7 @@ body.lightbox-open .bottom-progress-container {
   -webkit-overflow-scrolling: touch;
 }
 
+/* THE SNAP SECTION */
 .snap-section {
   height: 100dvh;
   width: 100%;
@@ -48,6 +37,19 @@ body.lightbox-open .bottom-progress-container {
   flex-direction: column;
 }
 
+/* GRADIENT TEXT ANIMATION */
+@keyframes textGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-text-gradient {
+  background-size: 200% auto;
+  animation: textGradient 5s ease-in-out infinite;
+}
+
+/* MARQUEE ANIMATION */
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -57,16 +59,24 @@ body.lightbox-open .bottom-progress-container {
   animation: marquee 60s linear infinite; 
 }
 
-/* Forces marquee to stop during manual navigation */
+/* FIXED: Force stop when paused either by hover or by button click
+   This selector targets the inline style "animation-play-state: paused" added by React
+*/
+.pause-on-hover:hover,
 [style*="animation-play-state: paused"] {
   animation-play-state: paused !important;
 }
 
+/* RESPONSIVE TYPOGRAPHY */
 .hero-title-responsive {
   font-size: clamp(3rem, 13vw, 16rem);
   line-height: 0.85;
   letter-spacing: -0.04em;
 }
 
+/* UTILITIES */
 .no-scrollbar::-webkit-scrollbar { display: none; }
-.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.no-scrollbar { 
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}
