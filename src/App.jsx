@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 
+// 1. Remove AOS imports to keep the project light
 import CustomCursor from './components/common/CustomCursor';
 import MotionBackground from './components/background/MotionBackground';
 import TransitionCurtain from './components/common/TransitionCurtain';
+import ScrollReveal from './components/common/ScrollReveal'; // Import your new component
 
 import Home from './pages/Home';
 import ProjectDetail from './pages/ProjectDetail';
@@ -14,13 +14,14 @@ const AppContent = () => {
   const location = useLocation();
 
   useEffect(() => {
-    AOS.init({ duration: 1000, once: true, easing: 'ease-out-cubic' });
+    // Keep window scroll to top on route change
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
   return (
     <>
       <CustomCursor />
+      {/* key triggers the curtain animation on every path change */}
       <TransitionCurtain key={location.pathname} />
       <MotionBackground />
 

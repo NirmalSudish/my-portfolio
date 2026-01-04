@@ -1,6 +1,34 @@
 /* src/styles/global.css */
 
-/* High Performance Marquee Animation */
+/* --- VARIABLE FONT BUBBLE STRETCH --- */
+/* This handles individual character interaction for "HI, I'M NIRMAL" */
+.stretch-letter {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-block;
+  font-weight: 200; /* Starting thin weight for maximum contrast */
+  will-change: transform, font-weight;
+  position: relative;
+}
+
+/* Expansion and Bloat on Hover */
+.stretch-letter:hover {
+  font-weight: 900 !important; /* Thickest weight from your Inter Variable Font */
+  transform: scale(1.4) translateY(-12px); /* Inflates and lifts the letter */
+  margin: 0 10px; /* Pushes other letters away for bubble effect */
+  color: #ffffff;
+  text-shadow: 0 0 35px rgba(255, 255, 255, 0.5);
+  z-index: 50; /* Ensures the bloated letter stays on top */
+  cursor: default;
+}
+
+/* Neighborhood reaction for 'wave' feel */
+/* This makes the letter immediately following the hovered one also react slightly */
+.stretch-letter:hover + .stretch-letter {
+  transform: scale(1.2) translateY(-4px);
+  font-weight: 500;
+}
+
+/* --- THE AUTOMATIC MARQUEE MOVEMENT --- */
 @keyframes marquee {
   0% { transform: translate3d(0, 0, 0); }
   100% { transform: translate3d(-50%, 0, 0); }
@@ -12,40 +40,34 @@
   will-change: transform;
 }
 
-/* Pause drift on hover only if not already manually scrolling */
+/* Pause marquee on hover so users can view projects */
 .group\/marquee:hover .animate-marquee {
   animation-play-state: paused;
 }
 
-/* Circular Glass Buttons - Matching Header Aesthetic */
+/* --- FROSTED GLASS UI BUTTONS --- */
 .glass-round-btn {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.15); /* Soft glass edge */
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-  cursor: pointer;
+  width: 70px;
+  height: 70px;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(25px) saturate(180%);
+  border: 4px solid #ffffff !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glass-round-btn:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  transform: translateY(-50%) scale(1.1);
-}
-
-.glass-round-btn svg {
-  transition: transform 0.3s ease;
-}
-
-.glass-round-btn:hover svg {
-  transform: scale(1.1);
-}
-
-/* Standard scroll hygiene */
-.no-scrollbar::-webkit-scrollbar {
+/* --- CLEANUP & CORE STYLES --- */
+.no-scrollbar::-webkit-scrollbar { 
   display: none;
 }
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+
+body {
+  transition: background-color 0.8s ease;
+  background-color: #111111;
+  overflow-x: hidden;
+  color: white;
 }

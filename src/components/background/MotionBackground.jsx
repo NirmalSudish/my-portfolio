@@ -12,7 +12,7 @@ const MotionBackground = () => {
     let grid = [];
     const gridSize = 30;
     let time = 0;
-    const mouse = { x: undefined, y: undefined, radius: 100 };
+    const mouse = { x: undefined, y: undefined, radius: 120 };
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -43,8 +43,9 @@ const MotionBackground = () => {
         forceY += springForceY;
 
         let color = '255, 255, 255';
-        let finalOpacity = 0.1;
-        let radius = 1.5;
+        // 1. BASE OPACITY: Changed from 0.1 to 0.04
+        let finalOpacity = 0.04; 
+        let radius = 1.2;
 
         if (mouse.x !== undefined) {
             const dx = mouse.x - point.x;
@@ -56,9 +57,15 @@ const MotionBackground = () => {
                 const angle = Math.atan2(dy, dx);
                 forceX -= Math.cos(angle) * force * 1.5;
                 forceY -= Math.sin(angle) * force * 1.5;
-                color = '199, 146, 255';
-                finalOpacity = force + 0.1;
-                radius = 2 + force * 2;
+                
+                color = '199, 146, 255'; 
+                // 2. INTERACTIVE OPACITY: Softened for subtle transition
+                finalOpacity = force * 0.4 + 0.04; 
+                radius = 1.5 + force * 4.5; 
+
+                ctx.shadowBlur = 35 * force; 
+                // 3. BLOOM OPACITY: Reduced for a softer lavender glow
+                ctx.shadowColor = `rgba(199, 146, 255, ${force * 0.3})`;
             }
         }
 
@@ -74,6 +81,8 @@ const MotionBackground = () => {
         ctx.arc(point.x, point.y, radius, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${color}, ${finalOpacity})`;
         ctx.fill();
+
+        ctx.shadowBlur = 0;
       }
       animationFrameId = requestAnimationFrame(animate);
     };
@@ -96,6 +105,13 @@ const MotionBackground = () => {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="fixed top-0 left-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }} />;
+  return (
+    <canvas 
+      ref={canvasRef} 
+      className="fixed top-0 left-0 w-full h-full pointer-events-none" 
+      style={{ zIndex: 0 }} 
+    />
+  );
 };
+
 export default MotionBackground;

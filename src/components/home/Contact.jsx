@@ -1,11 +1,18 @@
 import React from 'react';
 
-const Contact = () => (
-  <section id="contact" className="color-trigger-section py-12 md:py-32 relative z-10" data-bg-color="#111111">
-    <div className="container mx-auto px-6 text-center" data-aos="zoom-in">
-      <h2 className="text-4xl sm:text-6xl md:text-8xl font-black text-white leading-none">Let's work<br />together.</h2>
-      <p className="mt-8 text-xl sm:text-2xl text-gray-400 hover:text-white transition-colors border-b-2 border-gray-700 hover:border-white inline-block pb-2"><a href="mailto:hello@nirmal.com">hello@nirmal.com</a></p>
+const Contact = () => {
+  return (
+    <div className="text-center px-6">
+      {/* Animated gradient shimmering text */}
+      <h2 className="text-5xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter leading-none mb-8
+                     bg-gradient-to-r from-white via-[#c792ff] to-white bg-clip-text text-transparent animate-text-gradient">
+        LET'S WORK TOGETHER
+      </h2>
+      <a href="mailto:hello@nirmal.com" className="text-xl md:text-3xl font-bold text-white/60 hover:text-[#c792ff] transition-all duration-500 lowercase tracking-tight">
+        hello@nirmal.com
+      </a>
     </div>
-  </section>
-);
+  );
+};
+
 export default Contact;
