@@ -108,18 +108,3 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-/* Override text colors when a project is hovered (imitates dark mode) */
-body.project-hovered,
-body.project-hovered .text-black,
-body.project-hovered h2,
-body.project-hovered p,
-body.project-hovered span,
-body.project-hovered a,
-body.project-hovered button {
-  color: #ffffff !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
-}
-
-body.project-hovered .text-gray-400 {
-  color: #a3a3a3 !important;
-}

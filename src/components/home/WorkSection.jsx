@@ -175,7 +175,7 @@ const WorkSection = () => {
                     exit={{ opacity: 0, scale: 0.8 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <ProjectCard index={idx % filteredItems.length} item={item} onMouseEnter={c => { document.body.style.backgroundColor = c; document.body.classList.add('project-hovered'); }} onMouseLeave={() => { document.body.style.backgroundColor = ''; document.body.classList.remove('project-hovered'); }} onSelect={handleSelect} />
+                    <ProjectCard index={idx % filteredItems.length} item={item} onMouseEnter={c => { document.body.style.backgroundColor = c; }} onMouseLeave={() => { document.body.style.backgroundColor = ''; }} onSelect={handleSelect} />
                   </motion.div>
                 ))}
               </AnimatePresence>
