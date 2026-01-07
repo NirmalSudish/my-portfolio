@@ -52,8 +52,8 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  /* Vertically center content */
+  justify-content: flex-start;
+  /* REPAIRED: Align content to top to prevent cutoff */
   padding: 8rem 0;
   /* Add vertical padding for spacing */
 }
@@ -79,8 +79,8 @@ body {
     /* Reset min-height */
     scroll-snap-align: start;
     scroll-snap-stop: always;
-    justify-content: center;
-    /* Keep content centered */
+    justify-content: flex-start;
+    /* REPAIRED: Align content to top to prevent cutoff */
     padding: 0;
     /* Reset padding for desktop snap layout */
   }
