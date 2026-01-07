@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'; // Added useState
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import { resolvePath } from '../utils/imagePath';
 import { projects } from '../data/portfolioData';
 import { motion, AnimatePresence } from 'framer-motion'; // Added Framer Motion for the button
 import ScrollReveal from '../components/common/ScrollReveal';
@@ -140,7 +141,7 @@ const ProjectDetail = () => {
                             <div className="max-w-4xl w-full">
                                 {project.client !== 'Icons of Kerala' && (
                                     <img
-                                        src={project.logoUrl}
+                                        src={resolvePath(project.logoUrl)}
                                         alt="Logo"
                                         className={`
                                     ${project.client === 'Northern Escape' ? 'h-80' :
@@ -173,9 +174,9 @@ const ProjectDetail = () => {
                                 <ScrollReveal key={i}>
                                     <div>
                                         {isVideo ? (
-                                            <video src={src} autoPlay muted loop playsInline className="rounded-lg w-full shadow-lg" />
+                                            <video src={resolvePath(src)} autoPlay muted loop playsInline className="rounded-lg w-full shadow-lg" />
                                         ) : (
-                                            <img src={src} className="rounded-lg w-full shadow-lg" alt="Detail" />
+                                            <img src={resolvePath(src)} className="rounded-lg w-full shadow-lg" alt="Detail" />
                                         )}
                                     </div>
                                 </ScrollReveal>

@@ -1,5 +1,6 @@
 import React, { useState, useMemo, memo, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { resolvePath } from '../../utils/imagePath';
 import { AnimatePresence, motion } from 'framer-motion';
 import ScrollReveal from '../common/ScrollReveal';
 import {
@@ -26,7 +27,7 @@ const ProjectCard = memo(({ item, onMouseEnter, onMouseLeave, onSelect, index })
       {isProject ? (
         <Link to={`/project/${item.id}`} className="block transition-all duration-500 w-[500px] md:w-[700px]">
           <div className="rounded-xl overflow-hidden mb-6 bg-zinc-900 h-[350px] md:h-[550px] w-full relative">
-            <img src={item.mainImageUrl} className="h-full w-full object-cover dark:group-hover/card:scale-105 transition-all duration-1000" alt={item.client} />
+            <img src={resolvePath(item.mainImageUrl)} className="h-full w-full object-cover dark:group-hover/card:scale-105 transition-all duration-1000" alt={item.client} />
           </div>
           <div className="flex justify-between items-start px-1 w-full">
             <div className="text-left"><h3 className="font-bold text-xl md:text-2xl uppercase tracking-tighter leading-none mb-1">{item.client}</h3><p className="text-[10px] opacity-60 uppercase tracking-widest font-medium">{item.project}</p></div>
@@ -35,7 +36,7 @@ const ProjectCard = memo(({ item, onMouseEnter, onMouseLeave, onSelect, index })
         </Link>
       ) : (
         <div className="h-[400px] md:h-[650px] w-auto rounded-xl overflow-hidden bg-zinc-900 border border-white/5">
-          {isVideo ? <video src={item.src} autoPlay muted loop playsInline className="h-full w-auto object-contain" /> : <img src={item.src} className="h-full w-auto object-contain" alt="" />}
+          {isVideo ? <video src={resolvePath(item.src)} autoPlay muted loop playsInline className="h-full w-auto object-contain" /> : <img src={resolvePath(item.src)} className="h-full w-auto object-contain" alt="" />}
         </div>
       )}
     </div>
