@@ -146,8 +146,7 @@ const WorkSection = () => {
               { id: 'experimental', label: 'EXPERIMENTAL DESIGN' },
               { id: 'motion', label: 'MOTION DESIGN' }
             ].map(f => (
-              <button key={f.id} onClick={() => { setActiveFilter(f.id); setIsPaused(false); }} className={`group relative flex items-center gap-3 px-6 py-3 md:px-10 md:py-4 rounded-full transition-all duration-500 text-[10px] md:text-xs font-black uppercase tracking-widest transform-gpu ${activeFilter === f.id ? 'bg-black text-white dark:bg-white dark:text-black ring-2 ring-transparent dark:ring-1 dark:ring-white scale-105 shadow-[0_0_30px_-5px_rgba(199,146,255,0.4)]' : 'bg-transparent ring-2 ring-inset ring-black/10 dark:ring-[0.5px] dark:ring-white/50 text-black dark:!text-white hover:bg-black/5 dark:hover:bg-white/10 backdrop-blur-2xl'}`}>
-                {activeFilter === f.id && <div className="absolute inset-0 rounded-full opacity-30 blur-xl -z-10 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 animate-pulse" />}
+              <button key={f.id} onClick={() => { setActiveFilter(f.id); setIsPaused(false); }} className={`group relative flex items-center gap-3 px-6 py-3 md:px-10 md:py-4 rounded-full transition-all duration-500 text-[10px] md:text-xs font-black uppercase tracking-widest transform-gpu ${activeFilter === f.id ? 'bg-black text-white dark:bg-white dark:text-black ring-2 ring-transparent dark:ring-1 dark:ring-white scale-105 shadow-lg shadow-purple-500/30' : 'bg-white/5 ring-2 ring-inset ring-black/10 dark:ring-[0.5px] dark:ring-white/50 text-black dark:!text-white hover:bg-black/5 dark:hover:bg-white/10'}`}>
                 <span className="relative z-10">{categoryLogos[f.id]}</span><span className="relative z-10">{f.label}</span>
               </button>
             ))}
@@ -161,7 +160,7 @@ const WorkSection = () => {
 
         <div className="w-full overflow-hidden">
           <div ref={scrollContainerRef} className="overflow-x-auto no-scrollbar">
-            <motion.div
+            <div
               className={`flex min-w-full w-max gap-12 md:gap-24 px-[5vw] will-change-transform ${!isPaused ? 'animate-marquee-slow' : ''}`}
               style={{ animationPlayState: isPaused ? 'paused' : 'running', animationDuration: `${(filteredItems.length * 2) * SECONDS_PER_ITEM}s` }}
             >
@@ -179,7 +178,7 @@ const WorkSection = () => {
                   </motion.div>
                 ))}
               </AnimatePresence>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

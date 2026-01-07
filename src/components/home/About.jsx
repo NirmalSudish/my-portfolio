@@ -16,7 +16,7 @@ const About = () => {
 
                 <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10">
                   <img
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop"
+                    src="/images/about-me.jpg"
                     alt="Nirmal"
                     className="w-full h-full object-cover transition-all duration-700"
                   />
