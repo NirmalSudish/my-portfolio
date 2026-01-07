@@ -132,9 +132,9 @@ const WorkSection = () => {
         )}
       </AnimatePresence>
 
-      <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center mb-16 md:mb-24">
+      <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center mb-8 md:mb-16">
         <ScrollReveal>
-          <h2 className="text-5xl md:text-8xl font-black mb-12 uppercase tracking-tighter leading-none text-black dark:!text-white">Featured Work</h2>
+          <h2 className="text-3xl md:text-5xl lg:text-8xl font-black mb-8 uppercase tracking-tighter leading-none text-black dark:!text-white">Featured Work</h2>
         </ScrollReveal>
         <ScrollReveal delay={0.2}>
           <div className="flex flex-wrap justify-center gap-4 md:gap-6">
