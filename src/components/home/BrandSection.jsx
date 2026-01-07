@@ -14,12 +14,12 @@ const BrandSection = () => {
       {/* 5-LINE PHILOSOPHY: Each line is forced to stay on one line for desktop */}
       {/* 5-LINE PHILOSOPHY: Each line is forced to stay on one line for desktop */}
       <ScrollReveal>
-        <div className="text-2xl md:text-5xl lg:text-6xl font-medium leading-[1.2] mb-20 uppercase tracking-tight">
-          <div className="md:whitespace-nowrap">DRIVEN BY THE LOGIC OF SYSTEMS AND</div>
-          <div className="md:whitespace-nowrap">THE PRECISION OF VISUAL COMMUNICATION.</div>
-          <div className="md:whitespace-nowrap">I BUILD <span className="font-black">HIGH-END DIGITAL PRODUCTS</span></div>
-          <div className="md:whitespace-nowrap">THAT BRIDGE THE GAP BETWEEN COMPLEX</div>
-          <div className="md:whitespace-nowrap">ENGINEERING AND <span className="text-purple-600 dark:text-[#c792ff] font-black italic">HUMAN-CENTERED UI/UX DESIGN.</span></div>
+        <div className="text-2xl md:text-4xl xl:text-5xl 2xl:text-6xl font-medium leading-[1.2] mb-20 uppercase tracking-tight">
+          <div className="">DRIVEN BY THE LOGIC OF SYSTEMS AND</div>
+          <div className="">THE PRECISION OF VISUAL COMMUNICATION.</div>
+          <div className="">I BUILD <span className="font-black">HIGH-END DIGITAL PRODUCTS</span></div>
+          <div className="">THAT BRIDGE THE GAP BETWEEN COMPLEX</div>
+          <div className="">ENGINEERING AND <span className="text-purple-600 dark:text-[#c792ff] font-black italic">HUMAN-CENTERED UI/UX DESIGN.</span></div>
         </div>
       </ScrollReveal>
 
