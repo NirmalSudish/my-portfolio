@@ -26,7 +26,7 @@ const ProjectCard = memo(({ item, onMouseEnter, onMouseLeave, onSelect, index })
       {isProject ? (
         <Link to={`/project/${item.id}`} className="block transition-all duration-500 w-[500px] md:w-[700px]">
           <div className="rounded-xl overflow-hidden mb-6 bg-zinc-900 h-[350px] md:h-[550px] w-full relative">
-            <img src={item.mainImageUrl} className="h-full w-full object-cover group-hover/card:scale-105 transition-all duration-1000" alt={item.client} />
+            <img src={item.mainImageUrl} className="h-full w-full object-cover dark:group-hover/card:scale-105 transition-all duration-1000" alt={item.client} />
           </div>
           <div className="flex justify-between items-start px-1 w-full">
             <div className="text-left"><h3 className="font-bold text-xl md:text-2xl uppercase tracking-tighter leading-none mb-1">{item.client}</h3><p className="text-[10px] opacity-60 uppercase tracking-widest font-medium">{item.project}</p></div>
@@ -175,7 +175,7 @@ const WorkSection = () => {
                     exit={{ opacity: 0, scale: 0.8 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <ProjectCard index={idx % filteredItems.length} item={item} onMouseEnter={c => document.body.style.backgroundColor = c} onMouseLeave={() => document.body.style.backgroundColor = ''} onSelect={handleSelect} />
+                    <ProjectCard index={idx % filteredItems.length} item={item} onMouseEnter={c => { if (document.documentElement.classList.contains('dark')) document.body.style.backgroundColor = c; }} onMouseLeave={() => document.body.style.backgroundColor = ''} onSelect={handleSelect} />
                   </motion.div>
                 ))}
               </AnimatePresence>
