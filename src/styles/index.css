@@ -36,24 +36,61 @@ body {
   display: none;
 }
 
+/* REPAIRED: Default mobile styles */
 .snap-container {
-  height: 100dvh;
+  height: 100%;
   width: 100vw;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: auto;
-  overscroll-behavior-y: contain;
+  overflow-y: auto;
+  /* Changed from 'scroll' to 'auto' for cleaner mobile experience */
   -webkit-overflow-scrolling: touch;
 }
 
 .snap-section {
-  height: 100dvh;
+  min-height: 100vh;
+  /* Ensures sections are at least viewport height, can grow with content */
   width: 100%;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  /* Vertically center content */
+  padding: 8rem 0;
+  /* Add vertical padding for spacing */
+}
+
+/* REPAIRED: Snapping behavior for larger screens */
+@media (min-width: 1024px) {
+
+  /* Changed to 1024px for a more robust desktop breakpoint */
+  .snap-container {
+    height: 100dvh;
+    /* Use dynamic viewport height */
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: auto;
+    /* Use 'auto' for instant snapping handled by JS */
+    overscroll-behavior-y: contain;
+  }
+
+  .snap-section {
+    height: 100dvh;
+    /* Enforce strict viewport height */
+    min-height: 0;
+    /* Reset min-height */
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    justify-content: center;
+    /* Keep content centered */
+    padding: 0;
+    /* Reset padding for desktop snap layout */
+  }
+
+  /* Specific adjustment for the last section on desktop to accommodate the footer */
+  .snap-section:last-child {
+    justify-content: space-between;
+    padding-top: 6rem;
+    /* Adjust this value to match your navbar height */
+  }
 }
 
 @keyframes textGradient {
