@@ -28,11 +28,11 @@ const About = () => {
           {/* RIGHT COLUMN: Bio and Moving Gradient Button */}
           <div className="w-full md:w-7/12">
             <ScrollReveal delay={0.2}>
-              <h4 className="text-xl md:text-3xl font-black text-[#c792ff] uppercase tracking-[0.2em] mb-6">
+              <h4 className="text-xl md:text-3xl font-black text-[#c792ff] uppercase tracking-[0.2em] mb-6 relative z-20 no-underline">
                 The Story So Far
               </h4>
 
-              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-8">
+              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-tight mb-8">
                 I'm Nirmal.
               </h2>
 

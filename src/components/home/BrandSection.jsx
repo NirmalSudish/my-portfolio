@@ -30,7 +30,7 @@ const BrandSection = () => {
           Clients I have worked for
         </p>
 
-        <div className="bg-black/[0.03] dark:bg-white/[0.03] backdrop-blur-md border border-black/10 dark:border-white/10 rounded-full py-8 px-12 w-full overflow-hidden">
+        <div className="bg-black/[0.03] dark:bg-white/[0.03] backdrop-blur-md border border-black/10 dark:border-white/10 rounded-full py-8 px-6 md:px-12 w-full overflow-hidden">
           {/* Moving marquee uses the infinite animation from index.css */}
           <div className="flex animate-marquee-slow w-max gap-20 items-center grayscale opacity-40">
             {logos.map((logo, i) => (
