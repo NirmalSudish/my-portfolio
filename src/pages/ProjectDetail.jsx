@@ -97,17 +97,8 @@ const ProjectDetail = () => {
             <header className="fixed top-0 left-0 right-0 z-50 mix-blend-difference w-full pointer-events-none">
                 <div className="container mx-auto px-6 py-6 flex justify-between items-center pointer-events-auto">
                     <Link
-                        to="/#work"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            navigate('/');
-                            setTimeout(() => {
-                                const scrollContainer = document.querySelector('.snap-container');
-                                if (scrollContainer) {
-                                    scrollContainer.scrollTo({ top: 2 * window.innerHeight, behavior: 'auto' });
-                                }
-                            }, 100);
-                        }}
+                        to="/"
+                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                         className="text-black dark:text-white hover:opacity-75 transition-opacity cursor-pointer"
                     >
                         <svg ref={projectLogoRef} className="w-10 h-10 will-change-transform" viewBox="5 10.21 272.38 392.93" xmlns="http://www.w3.org/2000/svg">

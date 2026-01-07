@@ -36,7 +36,7 @@ const Navbar = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/0 backdrop-blur-sm transition-all duration-300">
       <div className="container mx-auto px-6 py-6">
         <div className="flex items-center justify-between">
-          <Link to="/" className="focus:outline-none cursor-pointer relative z-50">
+          <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="focus:outline-none cursor-pointer relative z-50">
             <svg ref={logoRef} className="w-10 h-10 md:w-12 md:h-12 will-change-transform" viewBox="5 10.21 272.38 392.93" xmlns="http://www.w3.org/2000/svg">
               <g>
                 <path fill="none" stroke="currentColor" strokeMiterlimit="10" strokeWidth="15" d="M5 21.53v381.61l194.89-178.66-139.48-45.96 43.16-33.49L5 21.53z" />
