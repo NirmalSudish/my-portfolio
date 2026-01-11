@@ -84,7 +84,7 @@ const Home = () => {
           <Hero />
         </section>
 
-        <section ref={el => sectionRefs.current[1] = el} className="snap-section w-full h-full flex flex-col justify-start pt-36 items-center">
+        <section ref={el => sectionRefs.current[1] = el} className="snap-section w-full h-full flex flex-col justify-center items-center">
           <BrandSection />
         </section>
 

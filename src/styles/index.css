@@ -52,8 +52,6 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  /* REPAIRED: Align content to top to prevent cutoff */
   padding: 8rem 0;
   /* Add vertical padding for spacing */
 }
@@ -79,10 +77,8 @@ body {
     /* Reset min-height */
     scroll-snap-align: start;
     scroll-snap-stop: always;
-    justify-content: flex-start;
-    /* REPAIRED: Align content to top to prevent cutoff */
-    padding-top: 6rem;
-    /* Ensure minimal padding for desktop */
+    /* Let specific sections handle justify-content via utility classes */
+    padding: 0;
   }
 
   /* Specific adjustment for the last section on desktop to accommodate the footer */
