@@ -54,10 +54,19 @@ const MotionBackground = () => {
       let targetX = mouse.x;
       let targetY = mouse.y;
 
-      // Auto-wander on mobile if no user interaction
-      if (canvas.width < 768 && mouse.x === undefined) {
-        targetX = (canvas.width / 2) + Math.sin(time * 0.5) * (canvas.width / 3);
-        targetY = (canvas.height / 2) + Math.cos(time * 0.3) * (canvas.height / 3);
+      // Auto-wander on mobile/tablet if no user interaction
+      if (canvas.width < 1024) {
+        if (mouse.x === undefined) {
+          // Breathing Auto-Wander
+          targetX = (canvas.width / 2) + Math.sin(time * 0.5) * (canvas.width / 3);
+          targetY = (canvas.height / 2) + Math.cos(time * 0.3) * (canvas.height / 3);
+          mouse.radius = 150 + Math.sin(time * 1.5) * 50; // Breathing effect (100-200px)
+        } else {
+          // Active Touch: Larger radius to be visible around finger
+          mouse.radius = 200;
+        }
+      } else {
+        mouse.radius = 120; // Desktop default
       }
 
       for (let i = 0; i < grid.length; i++) {

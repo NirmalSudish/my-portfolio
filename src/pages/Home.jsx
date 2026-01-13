@@ -10,6 +10,7 @@ import MotionBackground from '../components/background/MotionBackground';
 import BottomProgress from '../components/common/BottomProgress';
 
 const Home = () => {
+  // Mobile layout fix: removed h-full from sections to prevent clipping
   const [activeSection, setActiveSection] = useState(0);
   const containerRef = useRef(null);
   const sectionRefs = useRef([]);
@@ -80,23 +81,23 @@ const Home = () => {
         ref={containerRef}
         className="snap-container no-scrollbar relative z-10 w-full h-full overflow-y-auto scroll-smooth"
       >
-        <section ref={el => sectionRefs.current[0] = el} className="snap-section flex justify-center w-full h-full">
+        <section ref={el => sectionRefs.current[0] = el} className="snap-section flex justify-center w-full">
           <Hero />
         </section>
 
-        <section ref={el => sectionRefs.current[1] = el} className="snap-section w-full h-full flex flex-col justify-center items-center">
+        <section ref={el => sectionRefs.current[1] = el} className="snap-section w-full flex flex-col justify-center items-center">
           <BrandSection />
         </section>
 
-        <section ref={el => sectionRefs.current[2] = el} className="snap-section w-full h-full">
+        <section ref={el => sectionRefs.current[2] = el} className="snap-section w-full">
           <WorkSection />
         </section>
 
-        <section ref={el => sectionRefs.current[3] = el} className="snap-section w-full h-full flex flex-col justify-center items-center">
+        <section ref={el => sectionRefs.current[3] = el} className="snap-section w-full flex flex-col justify-center items-center">
           <About />
         </section>
 
-        <section ref={el => sectionRefs.current[4] = el} className="snap-section w-full h-full">
+        <section ref={el => sectionRefs.current[4] = el} className="snap-section w-full">
           <div id="contact" className="flex-grow flex items-center justify-center h-full">
             <Contact />
           </div>
