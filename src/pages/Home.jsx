@@ -89,7 +89,7 @@ const Home = () => {
           <BrandSection />
         </section>
 
-        <section ref={el => sectionRefs.current[2] = el} className="snap-section w-full h-[100dvh]">
+        <section ref={el => sectionRefs.current[2] = el} className="snap-section w-full min-h-[100dvh]">
           <WorkSection />
         </section>
 

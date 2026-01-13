@@ -7,10 +7,10 @@ const About = () => {
   return (
     <section id="about" className="w-full h-full flex items-center justify-center bg-transparent relative z-10 overflow-hidden pt-20 md:pt-0">
       <div className="container mx-auto px-6 md:px-12 lg:px-20 h-full flex flex-col justify-center">
-        <div className="flex flex-col md:flex-row gap-3 md:gap-16 items-center">
+        <div className="flex flex-col md:flex-row gap-6 md:gap-16 items-center">
 
           {/* LEFT COLUMN: Personal Image */}
-          <div className="w-[35vw] md:w-5/12">
+          <div className="w-3/4 md:w-5/12">
             <div className="relative">
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
                 <img
@@ -25,29 +25,29 @@ const About = () => {
           {/* RIGHT COLUMN: Bio and Moving Gradient Button */}
           <div className="w-full md:w-7/12 text-center md:text-left flex flex-col items-center md:items-start">
             <ScrollReveal delay={0.2}>
-              <h4 className="text-xs md:text-3xl font-black text-[#c792ff] uppercase tracking-[0.2em] mb-1 md:mb-6 relative z-20 no-underline">
+              <h4 className="text-sm md:text-3xl font-black text-[#c792ff] uppercase tracking-[0.2em] mb-4 md:mb-6 relative z-20 no-underline">
                 The Story So Far
               </h4>
 
-              <h2 className="text-2xl md:text-6xl font-black uppercase tracking-tighter leading-tight mb-3 md:mb-8">
+              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-tight mb-6 md:mb-8">
                 I'm Nirmal.
               </h2>
 
-              <div className="space-y-2 md:space-y-6 text-xs md:text-xl opacity-70 leading-relaxed font-medium mb-4 md:mb-10 max-w-md md:max-w-none">
+              <div className="space-y-4 md:space-y-6 text-sm md:text-xl opacity-70 leading-relaxed font-medium mb-8 md:mb-10 max-w-md md:max-w-none">
                 <p>
-                  I am a multi-disciplinary designer <br className="block md:hidden pb-0.5" />
-                  and <span className="font-bold opacity-100">Computer Science student</span> <br className="block md:hidden pb-0.5" />
+                  I am a multi-disciplinary designer <br className="block md:hidden pb-1" />
+                  and <span className="font-bold opacity-100">Computer Science student</span> <br className="block md:hidden pb-1" />
                   born and raised in the UAE.
                 </p>
                 <p>
-                  My work lives at the edge <br className="block md:hidden pb-0.5" />
-                  of design and logic, specializing <br className="block md:hidden pb-0.5" />
+                  My work lives at the edge <br className="block md:hidden pb-1" />
+                  of design and logic, specializing <br className="block md:hidden pb-1" />
                   in <span className="text-[#c792ff] italic font-black">human-centered UI/UX.</span>
                 </p>
               </div>
 
               {/* MOVING GREEN GRADIENT BUTTON: Placed below text */}
-              <div className="relative inline-flex items-center justify-center p-[1.5px] overflow-hidden rounded-full group scale-90 md:scale-100">
+              <div className="relative inline-flex items-center justify-center p-[1.5px] overflow-hidden rounded-full group scale-100">
                 {/* Rotating Border Effect */}
                 <motion.div
                   animate={{ rotate: 360 }}
