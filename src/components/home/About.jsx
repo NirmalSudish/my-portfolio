@@ -65,30 +65,30 @@ const About = () => {
                 </div>
               </div>
 
-              {/* MINIMALIST INFORMATION GRID - HIDDEN ON MOBILE TO FIT SCREEN */}
-              <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 gap-y-10 gap-x-12 pt-12 border-t border-black/10 dark:border-white/10 mb-8 place-items-center md:place-items-start">
-                <div className="flex flex-col">
+              {/* MINIMALIST INFORMATION GRID */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-8 gap-x-12 pt-8 md:pt-12 border-t border-black/10 dark:border-white/10 mb-8 place-items-center md:place-items-start w-full">
+                <div className="flex flex-col items-center md:items-start">
                   <span className="text-[10px] font-black text-[#c792ff] uppercase tracking-[0.3em] mb-2">Based In</span>
                   <span className="text-lg md:text-xl font-bold uppercase">Dubai, UAE</span>
                 </div>
 
-                <div className="flex flex-col">
+                <div className="flex flex-col items-center md:items-start">
                   <span className="text-[10px] font-black text-[#c792ff] uppercase tracking-[0.3em] mb-2">Currently working in</span>
                   <span className="text-lg md:text-xl font-bold uppercase">Google</span>
                 </div>
 
-                <div className="flex flex-col">
+                <div className="flex flex-col items-center md:items-start">
                   <span className="text-[10px] font-black text-[#c792ff] uppercase tracking-[0.3em] mb-2">Previous working</span>
                   <span className="text-lg md:text-xl font-bold opacity-40 uppercase">Independent Freelance</span>
                 </div>
               </div>
 
-              {/* VIEW RESUME BUTTON - HIDDEN ON MOBILE TO PREVENT CLUTTER */}
+              {/* VIEW RESUME BUTTON */}
               <a
                 href={resolvePath('/resume.pdf')}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden md:inline-flex items-center gap-3 px-8 py-4 bg-black text-white dark:bg-white dark:text-black font-black uppercase tracking-[0.2em] text-sm rounded-full hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-300 hover:scale-105 active:scale-95 mx-auto md:mx-0 mt-8"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-black text-white dark:bg-white dark:text-black font-black uppercase tracking-[0.2em] text-sm rounded-full hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-300 hover:scale-105 active:scale-95 mx-auto md:mx-0 mt-4 md:mt-8"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                   <path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
