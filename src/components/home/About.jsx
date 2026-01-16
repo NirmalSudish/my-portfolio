@@ -8,12 +8,12 @@ const About = () => {
     <section id="about" className="w-full h-full flex items-center justify-center bg-transparent relative z-10 overflow-hidden pt-4 md:pt-0">
       <div className="container mx-auto px-4 md:px-12 lg:px-20 h-full flex flex-col justify-center">
         {/* Mobile: Row Reverse (Text Left, Image Right) | Desktop: Normal Row (Image Left, Text Right) */}
-        <div className="flex flex-row md:flex-row gap-4 md:gap-16 items-start md:items-center h-full md:h-auto pt-8 md:pt-0">
+        <div className="flex flex-col md:flex-row gap-4 md:gap-16 items-center md:items-center h-full md:h-auto pt-8 md:pt-0">
 
-          {/* IMAGE COLUMN: Right on Mobile, Left on Desktop */}
-          {/* Mobile: Order 2 (Right), Desktop: Order 1 (Left) */}
-          <div className="w-[35%] md:w-5/12 order-2 md:order-1 flex items-start md:block pt-4 md:pt-0">
-            <div className="relative w-full">
+          {/* IMAGE COLUMN: Top on Mobile, Left on Desktop */}
+          {/* Mobile: Order 1 (Top), Desktop: Order 1 (Left) */}
+          <div className="w-full md:w-5/12 order-1 flex justify-center md:justify-start items-center md:block pt-4 md:pt-0">
+            <div className="relative w-48 md:w-full">
               <div className="relative aspect-[3/4] md:aspect-[4/5] overflow-hidden rounded-xl md:rounded-2xl border border-white/10 shadow-2xl">
                 <img
                   src={resolvePath('/images/about-me.jpg')}
@@ -24,9 +24,9 @@ const About = () => {
             </div>
           </div>
 
-          {/* TEXT COLUMN: Left on Mobile, Right on Desktop */}
-          {/* Mobile: Order 1 (Left), Desktop: Order 2 (Right) */}
-          <div className="w-[65%] md:w-7/12 text-left flex flex-col items-start order-1 md:order-2">
+          {/* TEXT COLUMN: Below photo on Mobile, Right on Desktop */}
+          {/* Mobile: Order 2 (Below), Desktop: Order 2 (Right) */}
+          <div className="w-full md:w-7/12 text-center md:text-left flex flex-col items-center md:items-start order-2">
             <ScrollReveal delay={0.2}>
               <h4 className="text-[10px] md:text-3xl font-black text-[#c792ff] uppercase tracking-[0.2em] mb-1 md:mb-6 relative z-20 no-underline whitespace-nowrap">
                 The Story So Far
