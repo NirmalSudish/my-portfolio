@@ -137,7 +137,7 @@ const WorkSection = () => {
           <h2 className="text-3xl md:text-5xl lg:text-8xl font-black mb-4 uppercase tracking-tighter leading-none text-black dark:!text-white">Featured Work</h2>
         </ScrollReveal>
         <ScrollReveal delay={0.2}>
-          <div className="flex flex-wrap justify-center items-center gap-2 md:gap-3 lg:gap-4 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 px-2 justify-center items-center w-full max-w-7xl mx-auto">
             {[
               { id: 'ux-branding', label: 'UI / UX and BRANDING' },
               { id: 'packaging-print', label: 'PRINT & PACKAGING' },
@@ -146,7 +146,7 @@ const WorkSection = () => {
               { id: 'experimental', label: 'EXPERIMENTAL DESIGN' },
               { id: 'motion', label: 'MOTION DESIGN' }
             ].map(f => (
-              <button key={f.id} onClick={() => { setActiveFilter(f.id); setIsPaused(false); }} className={`group relative flex items-center justify-center gap-2 px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-3 rounded-full transition-all duration-500 text-[9px] md:text-[10px] lg:text-xs font-black uppercase tracking-widest transform-gpu ${activeFilter === f.id ? 'bg-black text-white dark:bg-white dark:text-black ring-2 ring-transparent dark:ring-1 dark:ring-white scale-105 shadow-lg shadow-purple-500/30' : 'bg-white/5 ring-2 ring-inset ring-black/10 dark:ring-[0.5px] dark:ring-white/50 text-black dark:!text-white hover:bg-black/5 dark:hover:bg-white/10'}`}>
+              <button key={f.id} onClick={() => { setActiveFilter(f.id); setIsPaused(false); }} className={`group relative flex items-center justify-center gap-1.5 px-3 py-2 md:px-4 md:py-3 lg:px-1 lg:py-3 xl:px-4 xl:py-3 rounded-full transition-all duration-500 text-[9px] md:text-[10px] lg:text-[9px] xl:text-[11px] font-black uppercase tracking-widest transform-gpu w-full ${activeFilter === f.id ? 'bg-black text-white dark:bg-white dark:text-black ring-2 ring-transparent dark:ring-1 dark:ring-white scale-105 shadow-lg shadow-purple-500/30' : 'bg-white/5 ring-2 ring-inset ring-black/10 dark:ring-[0.5px] dark:ring-white/50 text-black dark:!text-white hover:bg-black/5 dark:hover:bg-white/10'}`}>
                 <span className="relative z-10">{categoryLogos[f.id]}</span><span className="relative z-10">{f.label}</span>
               </button>
             ))}
