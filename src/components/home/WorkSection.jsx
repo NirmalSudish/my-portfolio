@@ -103,7 +103,7 @@ const WorkSection = () => {
   }, [activeFilter]);
 
   return (
-    <section id="work" className="relative min-h-screen flex flex-col pt-32 md:pt-40 bg-transparent z-10 overflow-hidden">
+    <section id="work" className="relative min-h-screen flex flex-col pt-24 md:pt-40 bg-transparent z-10 overflow-hidden">
 
       <AnimatePresence>
         {selectedAsset && (
@@ -132,12 +132,12 @@ const WorkSection = () => {
         )}
       </AnimatePresence>
 
-      <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center mb-8 md:mb-16">
+      <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center mb-4 md:mb-16">
         <ScrollReveal>
-          <h2 className="text-3xl md:text-5xl lg:text-8xl font-black mb-8 uppercase tracking-tighter leading-none text-black dark:!text-white">Featured Work</h2>
+          <h2 className="text-3xl md:text-5xl lg:text-8xl font-black mb-4 uppercase tracking-tighter leading-none text-black dark:!text-white">Featured Work</h2>
         </ScrollReveal>
         <ScrollReveal delay={0.2}>
-          <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+          <div className="flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-4 md:gap-6 overflow-x-auto no-scrollbar pb-2 mask-linear-fade">
             {[
               { id: 'ux-branding', label: 'UI / UX and BRANDING' },
               { id: 'packaging-print', label: 'PRINT & PACKAGING' },
@@ -146,7 +146,7 @@ const WorkSection = () => {
               { id: 'experimental', label: 'EXPERIMENTAL DESIGN' },
               { id: 'motion', label: 'MOTION DESIGN' }
             ].map(f => (
-              <button key={f.id} onClick={() => { setActiveFilter(f.id); setIsPaused(false); }} className={`group relative flex items-center gap-3 px-6 py-3 md:px-10 md:py-4 rounded-full transition-all duration-500 text-[10px] md:text-xs font-black uppercase tracking-widest transform-gpu ${activeFilter === f.id ? 'bg-black text-white dark:bg-white dark:text-black ring-2 ring-transparent dark:ring-1 dark:ring-white scale-105 shadow-lg shadow-purple-500/30' : 'bg-white/5 ring-2 ring-inset ring-black/10 dark:ring-[0.5px] dark:ring-white/50 text-black dark:!text-white hover:bg-black/5 dark:hover:bg-white/10'}`}>
+              <button key={f.id} onClick={() => { setActiveFilter(f.id); setIsPaused(false); }} className={`group relative flex-shrink-0 flex items-center gap-3 px-6 py-3 md:px-10 md:py-4 rounded-full transition-all duration-500 text-[10px] md:text-xs font-black uppercase tracking-widest transform-gpu ${activeFilter === f.id ? 'bg-black text-white dark:bg-white dark:text-black ring-2 ring-transparent dark:ring-1 dark:ring-white scale-105 shadow-lg shadow-purple-500/30' : 'bg-white/5 ring-2 ring-inset ring-black/10 dark:ring-[0.5px] dark:ring-white/50 text-black dark:!text-white hover:bg-black/5 dark:hover:bg-white/10'}`}>
                 <span className="relative z-10">{categoryLogos[f.id]}</span><span className="relative z-10">{f.label}</span>
               </button>
             ))}
