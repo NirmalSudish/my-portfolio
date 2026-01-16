@@ -103,7 +103,7 @@ const WorkSection = () => {
   }, [activeFilter]);
 
   return (
-    <section id="work" className="relative h-auto md:h-screen flex flex-col pt-12 md:pt-0 bg-transparent z-10 overflow-hidden justify-center">
+    <section id="work" className="relative h-auto md:h-screen flex flex-col pt-12 md:pt-24 bg-transparent z-10 overflow-hidden justify-center">
 
       <AnimatePresence>
         {selectedAsset && (
