@@ -26,7 +26,7 @@ const ProjectCard = memo(({ item, onMouseEnter, onMouseLeave, onSelect, index })
     <div className="project-card flex-shrink-0 relative group/card cursor-pointer" onMouseEnter={() => isProject && onMouseEnter(item.bgColor || '#1d1d1d')} onMouseLeave={onMouseLeave} onClick={() => !isProject && onSelect(item, index)}>
       {isProject ? (
         <Link to={`/project/${item.id}`} className="block transition-all duration-500 w-[65vw] md:w-[60vw] lg:w-[45vw] xl:w-[40vw]">
-          <div className="rounded-xl overflow-hidden mb-3 md:mb-6 bg-zinc-900 h-[160px] md:h-[400px] lg:h-[500px] w-full relative">
+          <div className="rounded-xl overflow-hidden mb-3 md:mb-6 bg-zinc-900 h-[160px] md:h-[50vh] lg:h-[55vh] w-full relative">
             <img src={resolvePath(item.mainImageUrl)} loading="lazy" className="h-full w-full object-cover dark:group-hover/card:scale-105 transition-all duration-1000" alt={item.client} />
           </div>
           <div className="flex justify-between items-start px-1 w-full">
@@ -35,7 +35,7 @@ const ProjectCard = memo(({ item, onMouseEnter, onMouseLeave, onSelect, index })
           </div>
         </Link>
       ) : (
-        <div className="h-[260px] md:h-[450px] lg:h-[600px] w-auto rounded-xl overflow-hidden bg-zinc-900 border border-white/5">
+        <div className="h-[260px] md:h-[50vh] lg:h-[60vh] w-auto rounded-xl overflow-hidden bg-zinc-900 border border-white/5">
           {isVideo ? <video src={resolvePath(item.src)} muted loop playsInline preload="none" className="h-full w-auto object-contain" onMouseEnter={e => e.target.play()} onMouseLeave={e => e.target.pause()} /> : <img src={resolvePath(item.src)} loading="lazy" className="h-full w-auto object-contain" alt="" />}
         </div>
       )}
@@ -103,7 +103,7 @@ const WorkSection = () => {
   }, [activeFilter]);
 
   return (
-    <section id="work" className="relative min-h-screen flex flex-col pt-12 md:pt-20 lg:pt-24 bg-transparent z-10 overflow-hidden">
+    <section id="work" className="relative h-auto md:h-screen flex flex-col pt-12 md:pt-0 bg-transparent z-10 overflow-hidden justify-center">
 
       <AnimatePresence>
         {selectedAsset && (
@@ -154,7 +154,7 @@ const WorkSection = () => {
         </ScrollReveal>
       </div>
 
-      <div className="w-full relative group/marquee">
+      <div className="w-full relative group/marquee flex-grow flex flex-col justify-center">
         <button onClick={() => handleScroll('left')} className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 z-50 w-16 h-16 rounded-full border border-black/20 dark:border-white/20 bg-black/5 dark:bg-white/5 backdrop-blur-2xl opacity-0 group-hover/marquee:opacity-100 transition-all duration-500 flex items-center justify-center active:scale-90 shadow-2xl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-6 h-6"><path d="M15 18l-6-6 6-6" /></svg></button>
         <button onClick={() => handleScroll('right')} className="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 z-50 w-16 h-16 rounded-full border border-black/20 dark:border-white/20 bg-black/5 dark:bg-white/5 backdrop-blur-2xl opacity-0 group-hover/marquee:opacity-100 transition-all duration-500 flex items-center justify-center active:scale-90 shadow-2xl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-6 h-6"><path d="M9 18l6-6-6-6" /></svg></button>
 

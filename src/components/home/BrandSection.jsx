@@ -10,7 +10,7 @@ const BrandSection = () => {
   });
 
   return (
-    <div className="text-center px-6 w-full max-w-[90vw] lg:max-w-7xl mx-auto flex flex-col">
+    <div className="h-auto md:h-screen flex flex-col justify-center text-center px-6 w-full max-w-[90vw] lg:max-w-7xl mx-auto">
       {/* 5-LINE PHILOSOPHY: Each line is forced to stay on one line for desktop */}
       <ScrollReveal>
         <div className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-medium leading-[1.2] mb-12 uppercase tracking-tight">
