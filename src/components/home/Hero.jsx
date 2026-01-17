@@ -69,7 +69,7 @@ const Hero = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={nameFinished ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-xl md:text-2xl font-light flex flex-col items-center md:items-end gap-1"
+            className="text-xl md:text-xl lg:text-2xl font-light flex flex-col items-center md:items-end gap-1"
           >
             <span className="leading-none">I'm a</span>
 

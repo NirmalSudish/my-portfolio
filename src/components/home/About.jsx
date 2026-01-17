@@ -32,11 +32,11 @@ const About = () => {
                 The Story So Far
               </h4>
 
-              <h2 className="text-2xl md:text-6xl font-black uppercase tracking-tighter leading-tight mb-3 md:mb-8">
+              <h2 className="text-2xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-tight mb-3 md:mb-8">
                 I'm Nirmal.
               </h2>
 
-              <div className="space-y-1 md:space-y-6 text-[10px] md:text-xl opacity-70 leading-relaxed font-medium mb-3 md:mb-10 max-w-full md:max-w-none">
+              <div className="space-y-1 md:space-y-6 text-[10px] md:text-lg lg:text-xl opacity-70 leading-relaxed font-medium mb-3 md:mb-10 max-w-full md:max-w-none">
                 <p>
                   I am a multi-disciplinary designer <br className="block md:hidden" />
                   and <span className="font-bold opacity-100">CS student</span> <br className="block md:hidden" />
@@ -72,17 +72,17 @@ const About = () => {
               <div className="flex flex-col gap-2 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-y-8 md:gap-x-12 pt-0 md:pt-12 border-t-0 md:border-t border-black/10 dark:border-white/10 mb-3 md:mb-8 w-full">
                 <div className="flex flex-col items-center md:items-start">
                   <span className="text-[8px] md:text-[10px] font-black text-[#c792ff] uppercase tracking-[0.3em] mb-0.5 md:mb-2">Based In</span>
-                  <span className="text-sm md:text-xl font-bold uppercase">Dubai, UAE</span>
+                  <span className="text-sm md:text-lg lg:text-xl font-bold uppercase">Dubai, UAE</span>
                 </div>
 
                 <div className="flex flex-col items-center md:items-start">
                   <span className="text-[8px] md:text-[10px] font-black text-[#c792ff] uppercase tracking-[0.3em] mb-0.5 md:mb-2">Working At</span>
-                  <span className="text-sm md:text-xl font-bold uppercase">Google</span>
+                  <span className="text-sm md:text-lg lg:text-xl font-bold uppercase">Google</span>
                 </div>
 
                 <div className="flex flex-col items-center md:items-start">
                   <span className="text-[8px] md:text-[10px] font-black text-[#c792ff] uppercase tracking-[0.3em] mb-0.5 md:mb-2">Past</span>
-                  <span className="text-sm md:text-xl font-bold opacity-40 uppercase">Freelance</span>
+                  <span className="text-sm md:text-lg lg:text-xl font-bold opacity-40 uppercase">Freelance</span>
                 </div>
               </div>
 
