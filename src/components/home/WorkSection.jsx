@@ -25,8 +25,8 @@ const ProjectCard = memo(({ item, onMouseEnter, onMouseLeave, onSelect, index })
   return (
     <div className="project-card flex-shrink-0 relative group/card cursor-pointer" onMouseEnter={() => isProject && onMouseEnter(item.bgColor || '#1d1d1d')} onMouseLeave={onMouseLeave} onClick={() => !isProject && onSelect(item, index)}>
       {isProject ? (
-        <Link to={`/project/${item.id}`} className="block transition-all duration-500 w-[65vw] md:w-[50vw] lg:w-[40vw] xl:w-[40vw]">
-          <div className="rounded-xl overflow-hidden mb-3 md:mb-6 bg-zinc-900 h-[160px] md:h-[40vh] lg:h-[45vh] xl:h-[55vh] w-full relative">
+        <Link to={`/project/${item.id}`} className="block transition-all duration-500 w-[65vw] md:w-[45vw] lg:w-[40vw] xl:w-[40vw]">
+          <div className="rounded-xl overflow-hidden mb-3 md:mb-4 bg-zinc-900 h-[160px] md:h-[35vh] lg:h-[42vh] xl:h-[55vh] w-full relative">
             <img src={resolvePath(item.mainImageUrl)} loading="lazy" className="h-full w-full object-cover dark:group-hover/card:scale-105 transition-all duration-1000" alt={item.client} />
           </div>
           <div className="flex justify-between items-start px-1 w-full">
@@ -35,7 +35,7 @@ const ProjectCard = memo(({ item, onMouseEnter, onMouseLeave, onSelect, index })
           </div>
         </Link>
       ) : (
-        <div className="h-[260px] md:h-[40vh] lg:h-[50vh] xl:h-[60vh] w-auto rounded-xl overflow-hidden bg-zinc-900 border border-white/5">
+        <div className="h-[260px] md:h-[35vh] lg:h-[42vh] xl:h-[60vh] w-auto rounded-xl overflow-hidden bg-zinc-900 border border-white/5">
           {isVideo ? <video src={resolvePath(item.src)} muted loop playsInline preload="none" className="h-full w-auto object-contain" onMouseEnter={e => e.target.play()} onMouseLeave={e => e.target.pause()} /> : <img src={resolvePath(item.src)} loading="lazy" className="h-full w-auto object-contain" alt="" />}
         </div>
       )}
@@ -103,7 +103,7 @@ const WorkSection = () => {
   }, [activeFilter]);
 
   return (
-    <section id="work" className="relative h-auto md:h-screen flex flex-col pt-12 md:pt-24 bg-transparent z-10 overflow-hidden justify-center">
+    <section id="work" className="relative h-auto md:h-screen flex flex-col pt-12 md:pt-20 md:pb-24 bg-transparent z-10 overflow-hidden justify-center">
 
       <AnimatePresence>
         {selectedAsset && (
