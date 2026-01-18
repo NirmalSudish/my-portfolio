@@ -132,12 +132,12 @@ const WorkSection = () => {
         )}
       </AnimatePresence>
 
-      <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center mb-2 md:mb-4">
+      <div className="container mx-auto px-4 md:px-12 lg:px-20 text-center mb-2 md:mb-4">
         <ScrollReveal>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-2 md:mb-3 uppercase tracking-tighter leading-none text-black dark:!text-white">Featured Work</h2>
+          <h2 className="text-2xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-1.5 md:mb-3 uppercase tracking-tighter leading-none text-black dark:!text-white">Featured Work</h2>
         </ScrollReveal>
         <ScrollReveal delay={0.2}>
-          <div className="flex flex-col md:flex-row md:flex-wrap justify-center items-stretch md:items-center gap-2.5 md:gap-3 lg:gap-4 w-full max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:flex md:flex-row md:flex-wrap justify-center items-stretch md:items-center gap-2 md:gap-3 lg:gap-4 w-full max-w-4xl mx-auto">
             {[
               { id: 'ux-branding', label: 'UI / UX and BRANDING' },
               { id: 'packaging-print', label: 'PRINT & PACKAGING' },
@@ -146,7 +146,7 @@ const WorkSection = () => {
               { id: 'experimental', label: 'EXPERIMENTAL DESIGN' },
               { id: 'motion', label: 'MOTION DESIGN' }
             ].map(f => (
-              <button key={f.id} onClick={() => { setActiveFilter(f.id); setIsPaused(false); }} className={`group relative flex items-center justify-center gap-1.5 px-3.5 py-1.5 md:px-5 md:py-2.5 rounded-full md:rounded-full transition-all duration-500 text-[9px] md:text-[10px] font-black uppercase tracking-widest transform-gpu w-full md:w-auto ${activeFilter === f.id ? 'bg-black text-white dark:bg-white dark:text-black ring-2 ring-transparent dark:ring-1 dark:ring-white scale-105 shadow-lg shadow-purple-500/30' : 'bg-white/5 ring-2 ring-inset ring-black/10 dark:ring-[0.5px] dark:ring-white/50 text-black dark:!text-white hover:bg-black/5 dark:hover:bg-white/10'}`}>
+              <button key={f.id} onClick={() => { setActiveFilter(f.id); setIsPaused(false); }} className={`group relative flex items-center justify-center gap-1 md:gap-1.5 px-2.5 py-1.5 md:px-5 md:py-2.5 rounded-full transition-all duration-500 text-[8px] md:text-[10px] font-black uppercase tracking-wider md:tracking-widest transform-gpu md:w-auto ${activeFilter === f.id ? 'bg-black text-white dark:bg-white dark:text-black ring-2 ring-transparent dark:ring-1 dark:ring-white scale-105 shadow-lg shadow-purple-500/30' : 'bg-white/5 ring-2 ring-inset ring-black/10 dark:ring-[0.5px] dark:ring-white/50 text-black dark:!text-white hover:bg-black/5 dark:hover:bg-white/10'}`}>
                 <span className="relative z-10">{categoryLogos[f.id]}</span><span className="relative z-10">{f.label}</span>
               </button>
             ))}
