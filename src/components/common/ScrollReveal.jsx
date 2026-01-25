@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 
-const ScrollReveal = ({ children, delay = 0, x = 0, y = 30 }) => {
+const ScrollReveal = ({ children, delay = 0, x = 0, y = 30, className = "" }) => {
   return (
     <motion.div
+      className={className}
       initial={{ opacity: 0, x: x, y: y }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once: true, margin: "-10%" }} // Triggers when 10% of the element is visible

@@ -35,8 +35,8 @@ const ProjectCard = memo(({ item, onMouseEnter, onMouseLeave, onSelect, index })
           </div>
         </Link>
       ) : (
-        <div className="h-[260px] md:h-[40vh] lg:h-[50vh] xl:h-[60vh] w-auto rounded-xl overflow-hidden bg-zinc-900 border border-white/5">
-          {isVideo ? <video src={resolvePath(item.src)} muted loop playsInline preload="none" className="h-full w-auto object-contain" onMouseEnter={e => e.target.play()} onMouseLeave={e => e.target.pause()} /> : <img src={resolvePath(item.src)} loading="lazy" className="h-full w-auto object-contain" alt="" />}
+        <div className="h-[260px] md:h-[40vh] lg:h-[50vh] xl:h-[60vh] w-full md:w-auto rounded-xl overflow-hidden bg-zinc-900 border border-white/5">
+          {isVideo ? <video src={resolvePath(item.src)} muted loop playsInline autoPlay preload="metadata" className="h-full w-full md:w-auto object-contain" onMouseEnter={e => e.target.play()} onMouseLeave={e => e.target.pause()} /> : <img src={resolvePath(item.src)} loading="lazy" className="h-full w-full md:w-auto object-contain" alt="" />}
         </div>
       )}
     </div>
@@ -48,6 +48,7 @@ const WorkSection = () => {
   const [isPaused, setIsPaused] = useState(false);
   const [selectedAsset, setSelectedAsset] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(null); // Track index for navigation
+  const [mobileGalleryIndex, setMobileGalleryIndex] = useState(0); // Track mobile gallery position
   const scrollContainerRef = useRef(null);
   const pauseTimeoutRef = useRef(null);
 
@@ -94,6 +95,20 @@ const WorkSection = () => {
     pauseTimeoutRef.current = setTimeout(() => setIsPaused(false), 8000);
   };
 
+  // Mobile Gallery Navigation
+  const handleMobileGalleryNav = (direction) => {
+    if (direction === 'next') {
+      setMobileGalleryIndex((prev) => (prev + 1) % filteredItems.length);
+    } else {
+      setMobileGalleryIndex((prev) => (prev - 1 + filteredItems.length) % filteredItems.length);
+    }
+  };
+
+  // Reset mobile gallery index when filter changes
+  useEffect(() => {
+    setMobileGalleryIndex(0);
+  }, [activeFilter]);
+
   const filteredItems = useMemo(() => {
     const pMatched = projects.filter(p => activeFilter === 'ux-branding' ? (p.categories.includes('ux-ui') || p.categories.includes('branding')) : (activeFilter === 'packaging-print' ? p.categories.includes('print') : p.categories.includes(activeFilter)));
     const aMap = { 'ux-branding': brandingAssets, 'packaging-print': packagingAssets, 'visual': visuals, 'motion': motionVideos, '3d': threeD, 'experimental': experiments };
@@ -133,8 +148,8 @@ const WorkSection = () => {
       </AnimatePresence>
 
       <div className="container mx-auto px-4 md:px-12 lg:px-20 text-center mb-2 md:mb-4">
-        <ScrollReveal>
-          <h2 className="text-2xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-1.5 md:mb-3 uppercase tracking-tighter leading-none text-black dark:!text-white">Featured Work</h2>
+        <ScrollReveal className="mb-4 md:mb-6 lg:mb-8 xl:mb-10">
+          <h2 className="text-2xl md:text-5xl lg:text-6xl xl:text-7xl font-black uppercase tracking-tighter leading-none text-black dark:!text-white">Featured Work</h2>
         </ScrollReveal>
         <ScrollReveal delay={0.2}>
           <div className="grid grid-cols-2 md:flex md:flex-row md:flex-wrap justify-center items-stretch md:items-center gap-2 md:gap-3 lg:gap-4 w-full max-w-4xl mx-auto">
@@ -184,25 +199,69 @@ const WorkSection = () => {
         </div>
       </div>
 
-      {/* Mobile: Vertical Block List */}
-      <div className="w-full flex-grow flex flex-col justify-start md:hidden px-6 overflow-y-auto">
-        <div className="flex flex-col gap-6 pb-8">
-          <AnimatePresence mode="popLayout">
-            {filteredItems.map((item, idx) => (
-              <motion.div
-                key={`${item.id}-mobile`}
-                layout
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3, delay: idx * 0.05 }}
-                className="w-full"
-              >
-                <ProjectCard index={idx} item={item} onMouseEnter={c => { document.body.style.backgroundColor = c; }} onMouseLeave={() => { document.body.style.backgroundColor = ''; }} onSelect={handleSelect} />
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
+      {/* Mobile: Horizontal Gallery with Navigation */}
+      <div className="w-full flex-grow flex flex-col justify-center md:hidden relative">
+        {filteredItems.length > 0 && (
+          <>
+            {/* Navigation Buttons */}
+            <button
+              onClick={() => handleMobileGalleryNav('prev')}
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full border border-black/20 dark:border-white/30 bg-white/80 dark:bg-black/50 backdrop-blur-xl flex items-center justify-center active:scale-90 transition-all shadow-lg"
+              aria-label="Previous item"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-5 h-5">
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+
+            <button
+              onClick={() => handleMobileGalleryNav('next')}
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full border border-black/20 dark:border-white/30 bg-white/80 dark:bg-black/50 backdrop-blur-xl flex items-center justify-center active:scale-90 transition-all shadow-lg"
+              aria-label="Next item"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-5 h-5">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
+
+            {/* Gallery Container */}
+            <div className="w-full px-6 overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`mobile-${filteredItems[mobileGalleryIndex]?.id}-${mobileGalleryIndex}`}
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="w-full flex justify-center items-center"
+                >
+                  <ProjectCard
+                    index={mobileGalleryIndex}
+                    item={filteredItems[mobileGalleryIndex]}
+                    onMouseEnter={c => { document.body.style.backgroundColor = c; }}
+                    onMouseLeave={() => { document.body.style.backgroundColor = ''; }}
+                    onSelect={handleSelect}
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Pagination Dots */}
+            <div className="flex justify-center gap-2 mt-6 pb-8">
+              {filteredItems.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setMobileGalleryIndex(idx)}
+                  className={`transition-all duration-300 rounded-full ${idx === mobileGalleryIndex
+                    ? 'w-8 h-2 bg-purple-600 dark:bg-purple-400'
+                    : 'w-2 h-2 bg-black/20 dark:bg-white/30'
+                    }`}
+                  aria-label={`Go to item ${idx + 1}`}
+                />
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </section>
   );
