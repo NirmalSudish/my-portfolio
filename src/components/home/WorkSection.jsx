@@ -19,9 +19,11 @@ const categoryLogos = {
   'experimental': (<svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M9 3h6M10 3v7l-4 8a2 2 0 002 2h8a2 2 0 002-2l-4-8V3" /></svg>)
 };
 
-const ProjectCard = memo(({ item, onMouseEnter, onMouseLeave, onSelect, index }) => {
+const ProjectCard = memo(({ item, onMouseEnter, onMouseLeave, onSelect, index, priority = false }) => {
   const isProject = item.client !== undefined;
   const isVideo = typeof item.src === 'string' && item.src.endsWith('.mp4');
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <div className="project-card flex-shrink-0 relative group/card cursor-pointer" onMouseEnter={() => isProject && onMouseEnter(item.bgColor || '#1d1d1d')} onMouseLeave={onMouseLeave} onClick={() => !isProject && onSelect(item, index)}>
       {isProject ? (
@@ -35,8 +37,37 @@ const ProjectCard = memo(({ item, onMouseEnter, onMouseLeave, onSelect, index })
           </div>
         </Link>
       ) : (
-        <div className="h-[260px] md:h-[40vh] lg:h-[50vh] xl:h-[60vh] w-full md:w-auto rounded-xl overflow-hidden bg-zinc-900 border border-white/5">
-          {isVideo ? <video src={resolvePath(item.src)} muted loop playsInline autoPlay preload="metadata" className="h-full w-full md:w-auto object-contain" onMouseEnter={e => e.target.play()} onMouseLeave={e => e.target.pause()} /> : <img src={resolvePath(item.src)} loading="lazy" className="h-full w-full md:w-auto object-contain" alt="" />}
+        <div className="h-auto md:h-[40vh] lg:h-[50vh] xl:h-[60vh] w-full md:w-auto rounded-xl overflow-hidden bg-zinc-900 border border-white/5 relative min-h-[200px] flex items-center justify-center">
+          {isVideo ? (
+            <>
+              {isLoading && (
+                <div className="absolute inset-0 flex items-center justify-center z-0">
+                  <div className="w-8 h-8 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+                </div>
+              )}
+              <video
+                src={resolvePath(item.src)}
+                muted
+                loop
+                playsInline
+                autoPlay
+                preload={priority ? "auto" : "metadata"}
+                onLoadedData={() => setIsLoading(false)}
+                onWaiting={() => setIsLoading(true)}
+                onPlaying={() => setIsLoading(false)}
+                className={`w-full h-auto md:h-full md:w-auto md:object-contain relative z-10 transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+                onMouseEnter={e => e.target.play()}
+                onMouseLeave={e => e.target.pause()}
+              />
+            </>
+          ) : (
+            <img
+              src={resolvePath(item.src)}
+              loading={priority ? "eager" : "lazy"}
+              className="w-full h-auto md:h-full md:w-auto md:object-contain"
+              alt=""
+            />
+          )}
         </div>
       )}
     </div>
@@ -238,12 +269,28 @@ const WorkSection = () => {
                   <ProjectCard
                     index={mobileGalleryIndex}
                     item={filteredItems[mobileGalleryIndex]}
+                    priority={true} // Prioritize loading the current item
                     onMouseEnter={c => { document.body.style.backgroundColor = c; }}
                     onMouseLeave={() => { document.body.style.backgroundColor = ''; }}
                     onSelect={handleSelect}
                   />
                 </motion.div>
               </AnimatePresence>
+            </div>
+
+            {/* Hidden Preloader for Next Item */}
+            <div className="hidden">
+              {(() => {
+                const nextIndex = (mobileGalleryIndex + 1) % filteredItems.length;
+                const nextItem = filteredItems[nextIndex];
+                if (!nextItem) return null;
+                const isNextVideo = typeof nextItem.src === 'string' && nextItem.src.endsWith('.mp4');
+                return isNextVideo ? (
+                  <video src={resolvePath(nextItem.src)} preload="auto" muted />
+                ) : (
+                  <img src={resolvePath(nextItem.src)} loading="eager" alt="" />
+                );
+              })()}
             </div>
 
             {/* Pagination Dots */}
